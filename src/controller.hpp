@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <SDL_thread.h>
 
+
 typedef struct InputTrackball
 {
     int xrel;

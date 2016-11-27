@@ -5,6 +5,11 @@ Input Controller::input;
 bool  Controller::listenerActive = NULL;
 
 
+/**
+ * @brief Controller::Controller
+ *
+ * Constructor
+ */
 Controller::Controller() {
 
     this->listenerActive = false;
@@ -18,13 +23,23 @@ Controller::Controller() {
 }
 
 
-
+/**
+ * @brief Controller::~Controller
+ *
+ * Destructor
+ */
 Controller::~Controller() {
     this->clear();
 }
 
 
 
+/**
+ * @brief Controller::launchJoystickListener
+ * @param joystickNum - The joystick to be initialized
+ *
+ * Launches the joystick listener
+ */
 void Controller::launchJoystickListener(int joystickNum) {
 
     if (!Controller::listenerActive) {
@@ -42,7 +57,11 @@ void Controller::launchJoystickListener(int joystickNum) {
 }
 
 
-
+/**
+ * @brief Controller::stopJoystickListener
+ *
+ * Stops the listener
+ */
 void Controller::stopJoystickListener() {
 
     if (Controller::listenerActive) {
@@ -54,6 +73,11 @@ void Controller::stopJoystickListener() {
 
 
 
+/**
+ * @brief Controller::clear
+ *
+ * Stops the listener and the SDL
+ */
 void Controller::clear() {
     this->stopJoystickListener();
     this->destroySDL();
@@ -61,6 +85,11 @@ void Controller::clear() {
 
 
 
+/**
+ * @brief Controller::initializeSDL
+ *
+ * Launches the SDL
+ */
 void Controller::initializeSDL() {
 
     if(SDL_Init(SDL_INIT_JOYSTICK) < 0)
@@ -69,13 +98,22 @@ void Controller::initializeSDL() {
 
 
 
+/**
+ * @brief Controller::destroySDL
+ *
+ * Destroys the SDL
+ */
 void Controller::destroySDL() {
 
     SDL_Quit();
 }
 
 
-
+/**
+ * @brief Controller::displayJoysticksInformations
+ *
+ * Displays informations on the josystick
+ */
 void Controller::displayJoysticksInformations() {
 
     SDL_Joystick *joystick;
@@ -99,7 +137,12 @@ void Controller::displayJoysticksInformations() {
 }
 
 
-
+/**
+ * @brief Controller::initializeInput
+ * @param joystickNum - The joystick to be initialized
+ *
+ * Initializes the input for the desired joystick
+ */
 void Controller::initializeInput(int joystickNum) {
 
     if(joystickNum < SDL_NumJoysticks()) {
@@ -141,7 +184,11 @@ void Controller::initializeInput(int joystickNum) {
 }
 
 
-
+/**
+ * @brief Controller::destroyInput
+ *
+ * Destroys the input
+ */
 void Controller::destroyInput() {
 
     if(Controller::input.joystick != NULL) {

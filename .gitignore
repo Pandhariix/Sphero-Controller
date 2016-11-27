@@ -1,5 +1,4 @@
 *.exe
-*.pro
+build/
 *.pro.user
 *.dll
-build/
